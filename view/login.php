@@ -1,3 +1,10 @@
+<?php
+    session_start();
+
+    if($_SESSION['user']){
+        header("Location: http://localhost/RescueWatch/view/home.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="../res/css/main.css">
 	<script type="text/javascript" src="../res/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../res/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../res/js/rescuewatch.js"></script>
 </head>
 <body class="login-form">
 	<div class="container">
@@ -13,17 +21,18 @@
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
+            <div class="alert alert-danger" role="alert" id="login-error"></div>
+            <form class="form-signin" method="POST">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="inputUsername" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="inputPassword" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
                 <!-- <p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Open Login Modal</a></p> -->
-                <button class="btn btn-primary" type="submit">Sign in</button>
+                <button class="btn btn-primary" id="button1" type="submit">Sign in</button>
                 <a href="#" class="text-center new-account pull-left" role="button" data-toggle="modal" data-target="#login-modal">Create an account </a>
             </form><!-- /form -->
             <a href="#" class="forgot-password pull-right">

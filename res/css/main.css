@@ -9,6 +9,10 @@
     border-radius: 0px;
 }
 
+.login-form #login-error{
+    display: none;
+}
+
 /*
  * Specific styles of signin component
  */
